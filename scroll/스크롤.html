@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 5000px;
+            background-image: linear-gradient(#555, #AAA);
+        }
+
+        .content {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 3000px;
+        }
+
+        .scroll-contents {
+            opacity: 0;
+            transform: translateX(-200px);
+            transition: 1500ms;
+        }
+
+        .scroll-contents.active {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="text">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, cumque quidem? Sapiente rem eum dicta incidunt
+        eligendi placeat odio minima debitis molestias sit. Nulla aut tempore quae sit sed officiis?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui doloremque suscipit excepturi vero molestiae
+        possimus illo expedita omnis vel assumenda eveniet quidem molestias, velit dolores dolorum at accusamus
+        officiis.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora et, alias dolore molestiae nesciunt impedit,
+        voluptates pariatur id a ea excepturi dignissimos magnam assumenda soluta omnis perferendis praesentium fuga!
+        Cupiditate.
+
+    </div>
+
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <script>
+        const scrollContent = document.querySelector('.scroll-contents');
+
+
+        window.addEventListener('scroll', (e) => {
+            console.log(scrollContent.getBoundingClientRect().top - window.innerHeight < 0)
+            if (scrollContent.getBoundingClientRect().top - window.innerHeight < 0) {
+                scrollContent.classList.add('active');
+            } else {
+                scrollContent.classList.remove('active');
+            }
+        })
+
+    </script>
+</body>
+
+</html>
