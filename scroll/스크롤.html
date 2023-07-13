@@ -15,7 +15,7 @@
             color: white;
             font-size: 32px;
             font-weight: bold;
-            margin-top: 3000px;
+            margin-top: 300px;
         }
 
         .scroll-contents {
@@ -27,6 +27,10 @@
         .scroll-contents.active {
             opacity: 1;
             transform: none;
+        }
+
+        .this-is-girl {
+            margin-bottom: 500px;
         }
     </style>
 </head>
@@ -48,16 +52,79 @@
     <div class="content scroll-contents">
         나타난다!
     </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <div class="content scroll-contents">
+        나타난다!
+    </div>
+    <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl" alt="">
     <script>
-        const scrollContent = document.querySelector('.scroll-contents');
-
+        const scrollContent = document.getElementsByClassName('scroll-contents');
+        const thisIsGirl = document.querySelector('.this-is-girl');
 
         window.addEventListener('scroll', (e) => {
-            console.log(scrollContent.getBoundingClientRect().top - window.innerHeight < 0)
-            if (scrollContent.getBoundingClientRect().top - window.innerHeight < 0) {
-                scrollContent.classList.add('active');
-            } else {
-                scrollContent.classList.remove('active');
+
+            console.log(thisIsGirl.getBoundingClientRect().top - window.innerHeight);
+
+            const 좌표 = thisIsGirl.getBoundingClientRect().top - window.innerHeight;
+            const 백분율 = -(좌표 + 300) / 600;
+
+            console.log(백분율);
+
+            thisIsGirl.style.opacity = `${백분율}`;
+
+            // -300에 나타나기 시작해서
+            // -900에 완전히 나타나게 하고싶다!
+
+            for (let i = 0; i < scrollContent.length; i++) {
+
+
+                console.log(scrollContent[i].getBoundingClientRect().top - window.innerHeight < 0)
+                if (scrollContent[i].getBoundingClientRect().top - window.innerHeight < 0) {
+                    scrollContent[i].classList.add('active');
+                } else {
+                    scrollContent[i].classList.remove('active');
+                }
             }
         })
 
