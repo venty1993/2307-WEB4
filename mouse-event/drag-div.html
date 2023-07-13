@@ -43,18 +43,23 @@
         })
         window.addEventListener('mousemove', (e) => {
             if (isClicked) {
-                const top = e.clientY < 0;
-                const left = e.clientX < 0;
-                const bottom = e.clientY > window.innerHeight;
-                const right = e.clientX > window.innerWidth;
 
-                moveX = e.clientX - clickX;
-                moveY = e.clientY - clickY;
-                div.style.transform = `translate(${moveX + endX}px,${moveY + endY}px)`
-                if (top || left || bottom || right) {
+                const top = e.clientY > 0;
+                const left = e.clientX > 0;
+                const bottom = e.clientY < window.innerHeight;
+                const right = e.clientX < window.innerWidth;
+
+                console.log(top, left, bottom, right)
+                if (top && left && bottom && right) {
+                    moveX = e.clientX - clickX;
+                    moveY = e.clientY - clickY;
+                    div.style.transform = `translate(${moveX + endX}px,${moveY + endY}px)`
+                } else {
                     isClicked = false;
                     div.style.transform = `translate(${endX}px,${endY}px)`
                 }
+
+
             }
         })
         div.addEventListener('mouseup', () => {
