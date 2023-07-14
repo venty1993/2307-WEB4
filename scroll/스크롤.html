@@ -32,6 +32,10 @@
         .this-is-girl {
             margin-bottom: 500px;
         }
+
+        .scroll-opacity {
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -97,21 +101,34 @@
     <div class="content scroll-contents">
         나타난다!
     </div>
-    <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl" alt="">
+    <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl scroll-opacity" alt="">
+    <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl scroll-opacity" alt="">
+    <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl scroll-opacity" alt="">
+    <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl scroll-opacity" alt="">
     <script>
         const scrollContent = document.getElementsByClassName('scroll-contents');
-        const thisIsGirl = document.querySelector('.this-is-girl');
+        const scrollOpacity = document.getElementsByClassName('scroll-opacity')
 
         window.addEventListener('scroll', (e) => {
+            console.log(scrollOpacity[0].getBoundingClientRect().top)
 
-            console.log(thisIsGirl.getBoundingClientRect().top - window.innerHeight);
+            for (let i = 0; i < scrollOpacity.length; i++) {
 
-            const 좌표 = thisIsGirl.getBoundingClientRect().top - window.innerHeight;
-            const 백분율 = -(좌표 + 300) / 600;
+                //객체.getBoundingClientRect().top : window의 윗부분과 객체 윗부분 사이의 거리
+                //아직 나타나지 않았을떄 양수, 지나쳤을때 음수 단위는 px
 
-            console.log(백분율);
+                //window.innerHeight : window 내부의 높이
 
-            thisIsGirl.style.opacity = `${백분율}`;
+                //좌표 : window의 윗부분과 객체 사이의 거리 - window 내부의 높이
+                const 좌표 = scrollOpacity[i].getBoundingClientRect().top - window.innerHeight;
+                //좌표 : 컨텐츠가 window의 바닥면에 닿았을때 0
+                // -(좌표 + window.innerHeight / 3) : 0에 윈도우높이의 3분의1을 더해준다.
+
+                const 백분율 = -(좌표 + window.innerHeight / 3) / (window.innerHeight / 3);
+                scrollOpacity[i].style.opacity = `${백분율}`;
+            }
+
+
 
             // -300에 나타나기 시작해서
             // -900에 완전히 나타나게 하고싶다!
