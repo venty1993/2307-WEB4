@@ -17,4 +17,9 @@ window.addEventListener('scroll', () => {
     }
 
     이전좌표 = window.scrollY;
-}) 
+})
+
+const scrollContent = document.querySelectorAll('.advantage > *')
+
+console.log(scrollContent)
+makeScrollContents(scrollContent);

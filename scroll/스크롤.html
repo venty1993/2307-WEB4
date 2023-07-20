@@ -106,14 +106,12 @@
     <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl scroll-opacity" alt="">
     <img src="dom-hill-nimElTcTNyY-unsplash.jpg" class="this-is-girl scroll-opacity" alt="">
     <script>
-        const scrollContent = document.getElementsByClassName('scroll-contents');
+
         const scrollOpacity = document.getElementsByClassName('scroll-opacity')
 
+
         window.addEventListener('scroll', (e) => {
-            console.log(scrollOpacity[0].getBoundingClientRect().top)
-
             for (let i = 0; i < scrollOpacity.length; i++) {
-
                 //객체.getBoundingClientRect().top : window의 윗부분과 객체 윗부분 사이의 거리
                 //아직 나타나지 않았을떄 양수, 지나쳤을때 음수 단위는 px
 
@@ -127,23 +125,25 @@
                 const 백분율 = -(좌표 + window.innerHeight / 3) / (window.innerHeight / 3);
                 scrollOpacity[i].style.opacity = `${백분율}`;
             }
-
-
-
-            // -300에 나타나기 시작해서
-            // -900에 완전히 나타나게 하고싶다!
-
-            for (let i = 0; i < scrollContent.length; i++) {
-
-
-                console.log(scrollContent[i].getBoundingClientRect().top - window.innerHeight < 0)
-                if (scrollContent[i].getBoundingClientRect().top - window.innerHeight < 0) {
-                    scrollContent[i].classList.add('active');
-                } else {
-                    scrollContent[i].classList.remove('active');
-                }
-            }
         })
+
+
+        makeScrollContents(document.getElementsByClassName('scroll-contents'));
+
+        function makeScrollContents(scrollContent) {
+            window.addEventListener('scroll', (e) => {
+                // -300에 나타나기 시작해서
+                // -900에 완전히 나타나게 하고싶다!
+                for (let i = 0; i < scrollContent.length; i++) {
+                    console.log(scrollContent[i].getBoundingClientRect().top - window.innerHeight < 0)
+                    if (scrollContent[i].getBoundingClientRect().top - window.innerHeight < 0) {
+                        scrollContent[i].classList.add('active');
+                    } else {
+                        scrollContent[i].classList.remove('active');
+                    }
+                }
+            })
+        }
 
     </script>
 </body>
