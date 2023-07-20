@@ -1,3 +1,4 @@
+
 const header = document.querySelector('header');
 let 이전좌표 = 0;
 window.addEventListener('scroll', () => {
@@ -20,6 +21,6 @@ window.addEventListener('scroll', () => {
 })
 
 const scrollContent = document.querySelectorAll('.advantage > *')
-
-console.log(scrollContent)
 makeScrollContents(scrollContent);
+
+makeCountUp(document.querySelector('.count-up'), 8985351, 4000, 24);

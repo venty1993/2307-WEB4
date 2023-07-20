@@ -1,5 +1,6 @@
-function makeScrollContents(scrollContent, vector) {
 
+
+function makeScrollContents(scrollContent, vector) {
     if (vector === 'left') {
         for (let i = 0; i < scrollContent.length; i++) {
             scrollContent[i].classList.add('left')
@@ -9,11 +10,9 @@ function makeScrollContents(scrollContent, vector) {
             scrollContent[i].classList.add('right')
         }
     }
-
     for (let i = 0; i < scrollContent.length; i++) {
         scrollContent[i].classList.add('scroll-contents')
     }
-
 
     window.addEventListener('scroll', (e) => {
         // -300에 나타나기 시작해서
