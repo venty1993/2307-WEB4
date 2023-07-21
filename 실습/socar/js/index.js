@@ -24,3 +24,14 @@ const scrollContent = document.querySelectorAll('.advantage > *')
 makeScrollContents(scrollContent);
 
 makeCountUp(document.querySelector('.count-up'), 8985351, 4000, 24);
+
+
+const incline = document.querySelector('.incline');
+
+incline.style.left = '50%';
+
+window.addEventListener('scroll', () => {
+    if (incline.getBoundingClientRect().top - window.innerHeight < 0) {
+        incline.style.left = '0%';
+    }
+})
