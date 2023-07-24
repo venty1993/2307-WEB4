@@ -100,11 +100,27 @@ h1>a {
     width: 80%;
     height: 3px;
     background-color: #fff;
+    position: absolute;
+    transition: 0.3s;
 }
 
 .hamberger::after {
-    margin-left: auto;
+    transform: translate(-4px, -5px);
 }
+
+.hamberger::before {
+    transform: translate(4px, 5px);
+}
+
+.hamberger.active::before {
+    transform: rotate(45deg);
+}
+
+.hamberger.active::after {
+    transform: rotate(-45deg);
+}
+
+
 
 main {
     overflow: hidden;
