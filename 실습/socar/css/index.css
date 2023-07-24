@@ -59,6 +59,7 @@ header.scrolled .hamberger::after {
 h1 {
     width: 112px;
     position: relative;
+    z-index: 10;
 }
 
 h1>a {
@@ -88,6 +89,8 @@ h1>a {
     flex-direction: column;
     justify-content: center;
     gap: 6px;
+    position: relative;
+    z-index: 10;
 }
 
 .hamberger::before,
@@ -352,7 +355,7 @@ footer nav {
 }
 
 .hamberger-click {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
