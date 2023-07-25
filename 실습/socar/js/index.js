@@ -42,9 +42,27 @@ window.addEventListener('scroll', () => {
 const hambergerButton = document.querySelector('.hamberger');
 const hambergerClick = document.querySelector('.hamberger-click');
 const hambergerNav = document.querySelector('.hamberger-nav')
+const hambegerTransition = 500;
+
+hambergerButton.addEventListener('click', (e) => {
+
+    e.preventDefault();
+    if (hambergerButton.classList.contains('active')) {
+        closeHameberger(hambegerTransition);
+    } else {
+        openHamberger();
+    }
+})
+
+window.addEventListener('scroll', () => {
+    if (hambergerButton.classList.contains('active'))
+        closeHameberger(0);
+})
 
 
-hambergerButton.addEventListener('click', () => {
+hambergerNav.style.transition = `${hambegerTransition}ms`
+
+function openHamberger() {
     hambergerButton.classList.add('active')
     hambergerClick.classList.add('active');
 
@@ -52,4 +70,16 @@ hambergerButton.addEventListener('click', () => {
         hambergerNav.style.transform = `none`;
     }, 1);
 
-})
+}
+
+function closeHameberger(transition) {
+    hambergerButton.classList.remove('active')
+    hambergerNav.style.transform = `translateX(100%)`;
+    setTimeout(() => {
+
+        hambergerClick.classList.remove('active');
+    }, transition);
+
+}
+
+
