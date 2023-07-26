@@ -25,7 +25,7 @@
         .가림막 {
             width: 100%;
             height: 1000px;
-            background-color: #AAA;
+            background-color: #AAAAAA50;
         }
     </style>
 </head>
@@ -36,6 +36,20 @@
         <div class="가림막"></div>
     </div>
     <script>
+        const container = document.querySelector('.container')
+
+        let windowHeight = document.body.clientHeight;
+        let scrollRange = windowHeight - window.innerHeight;
+
+
+
+        window.addEventListener('scroll', () => {
+            console.log(windowHeight);
+            console.log(window.scrollY)
+
+            console.log(`적용값 = ${(window.scrollY - scrollRange / 2) / (scrollRange / 2) * 30}`)
+            container.style.backgroundPositionY = `${(window.scrollY - scrollRange / 2) / (scrollRange / 2) * 100}%`
+        })
 
     </script>
 </body>
