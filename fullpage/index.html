@@ -30,22 +30,99 @@
         .page4 {
             background-color: rgb(157, 104, 145);
         }
+
+        .long {
+            height: 2500px;
+            background-image: linear-gradient(#aaaa, #222);
+        }
     </style>
 </head>
 
 <body>
-    <section class="page1"></section>
+    <section class="page1">
+        <button id="test">오잉</button>
+        <button id="del">제거</button>
+    </section>
     <section class="page2"></section>
     <section class="page3"></section>
     <section class="page4"></section>
 
+    <section class="long">길다</section>
+
     <script>
 
+        const oing = document.getElementById('test');
+        const del = document.getElementById('del');
+
+
+        function fOing() {
+            alert('오잉');
+        }
+
+        oing.addEventListener('click', fOing);
+
+        del.addEventListener('click', () => {
+            oing.removeEventListener('click', fOing);
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        const section = document.getElementsByTagName('section')
         let index = 0;
+        let move = false
+        let 벗어남 = false
 
         window.addEventListener('mousewheel', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+
+            if (window.scrollY < window.innerHeight * (section.length - 1)) {
+
+                e.preventDefault();
+                if (!move) {
+                    move = true;
+
+                    if (e.deltaY < 0) {
+                        index--;
+                    } else {
+                        index++;
+                    }
+
+                    index = index < 0 ? 0 : index;
+                    index = index >= section.length - 1 ? section.length - 1 : index;
+
+                    console.log(index);
+                    window.scrollTo({ top: index * window.innerHeight, behavior: 'smooth' })
+
+                    setTimeout(() => {
+
+                        move = false;
+                    }, 500);
+
+                }
+            } else {
+                벗어남 = true;
+            }
+
+            if () {
+
+            }
+
+
         }, { passive: false })
     </script>
 </body>
